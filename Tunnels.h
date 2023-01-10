@@ -34,7 +34,15 @@ public:
     // définit dans le problème.
     Tunnels(const std::string &input);
 
-    // Calculates the total rate of a given tour.
+    // Calcule la pression totale qui peut s'échapper des soupapes.
+    // Pour parcourir le 'tour', il y a un total de 'length' minutes disponible.
+    // Chaque passage d'un 'Step' à l'autre prend une minute.
+    // Ouvrir une vanne prend aussi une minute.
+    // Après qu'une vanne est ouverte, il y a 'rate[valve]' de pression qui
+    // s'échappe chaque minute qui reste.
+    // Quand le temps est échu, il n'y a plus de 'Step' qui sont interprétés,
+    // même si on n'est pas arrivé au bout.
+    // Pour plus de détails, voir https://adventofcode.com/2022/day/16
     unsigned calc_rate(const std::vector<Step> &tour, unsigned length);
 };
 

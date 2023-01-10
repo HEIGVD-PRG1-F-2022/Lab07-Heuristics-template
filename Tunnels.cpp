@@ -12,12 +12,25 @@
 using namespace std;
 
 Tunnels::Tunnels(const string &file) {
+    string line;
+    ifstream infile(file);
+    while (getline(infile, line)) {
+        if (line.empty()) {
+        }
+    }
     // TODO
 }
 
 unsigned Tunnels::calc_rate(const vector<Step> &tour, unsigned length) {
+    (void) tour;
+    (void) length;
     // TODO
     return 0;
+}
+
+std::ostream &operator<<(std::ostream &out, const Tunnels &t) {
+    (void) t;
+    return out;
 }
 
 vector<Step> str_to_tour(string s) {

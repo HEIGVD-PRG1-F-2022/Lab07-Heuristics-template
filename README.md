@@ -22,6 +22,9 @@ links["AA"] = vector<string>{"DD", "II", "BB"};
 
 Ajoute la pression `0` pour la soupape `"AA"`, ainsi que des liens vers les soupapes `"DD"`, `"II"`, et `"BB"`.
 
+Finalement vous devez encore compléter la méthode `calc_rate` qui calcule
+la pression qui s'échappe étant donné une route à travers les caves.
+
 ## Bonus
 
 Une fois la classe `Tunnels` complétée, vous pouvez trouver la bonne solution avec la recherche

@@ -19,6 +19,8 @@ struct Step {
 // Chaque cave a une soupape qui peut laisser échapper des gaz à une pression.
 // Attention, la pression peut être 0!
 class Tunnels {
+    void add_valve(const std::string &line);
+
 public:
     // Les soupapes
     std::vector<std::string> valves;

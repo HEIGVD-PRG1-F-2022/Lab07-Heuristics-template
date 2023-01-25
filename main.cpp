@@ -26,15 +26,33 @@ int main() {
 
     Tunnels t("../input.txt");
     cout << t << endl;
-    OnePerson input(t);
+        OnePerson input(t);
+//    TwoPersons input(t);
+    Solve solver_rnd(input);
     Solve solver_annealing(input);
-    Solve solver_genetic(input);
+        vector<Solve<OnePerson>> solvers;
+//    vector<Solve<TwoPersons>> solvers;
+    for (int i = 0; i < 10; i++) {
+        solvers.emplace_back(input);
+    }
     unsigned rounds = 50;
     for (unsigned i = 0; i < rounds; i++) {
         double mutate = pow(1 - i / (rounds - 1.), 10.);
         cout << "Round " << i;
+        cout << " - random: " << solver_rnd.run_random(1000);
         cout << " - annealing: " << solver_annealing.run_annealing(1000, mutate);
-        cout << " - genetics: " << solver_genetic.run_genetic(1000, 100, 10, 0.01) << endl;
+        cout << " - genetics: ";
+        unsigned random = 0;
+        vector<unsigned> fitnesses;
+        for (auto &solver: solvers) {
+            auto latest = solver.run_genetic(1000, 10 * (random + 1), random, 0.01);
+            cout << latest << " ";
+            fitnesses.push_back(latest);
+            ++random;
+        }
+        cout << endl;
+        sort(fitnesses.begin(), fitnesses.end());
+        cout << "Best is: " << fitnesses.back() << endl;
     }
     return 0;
 }
